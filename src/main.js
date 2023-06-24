@@ -1,25 +1,33 @@
 import { createApp } from "vue";
-import "./style.css";
 import Antd from "ant-design-vue";
 import App from "./App.vue";
 import "ant-design-vue/dist/antd.css";
-import { VueRouter } from "vue-router";
+import { createWebHistory, createRouter } from "vue-router";
 
-import 
-
-const Home = { template: "<div>Home</div>" };
-const About = { template: "<div>About</div>" };
+import "./styles/base.scss";
+import BaseLayout from "./layout/BaseLayout.vue";
+import About from "./views/About/Index.vue";
+import Main from "./views/Main/Index.vue";
+import TestiMony from "./views/Testimony/Index.vue";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/about", component: About },
+  {
+    path: "/",
+    redirect: { name: "Main" },
+    component: BaseLayout,
+    children: [
+      { path: "main", name: "Main", component: Main },
+      { path: "about", name: "About", component: About },
+      { path: "testimony/:id", name: "Testimony", component: TestiMony },
+    ],
+  },
 ];
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+  history: createWebHistory(),
   routes,
 });
 
 const app = createApp(App);
 
-app.use(Antd).use(router).mount("#app");
+app.use(Antd).use(router).mount("#holyPineCareApp");
