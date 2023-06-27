@@ -20,6 +20,7 @@ const testimonyId = computed(() => route.params.id);
 const testimony = computed(() =>
   TESTIMONY_LIST.find((i) => i.testimonyId === Number(testimonyId.value))
 );
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -8,7 +8,7 @@ import "./styles/base.scss";
 import BaseLayout from "./layout/BaseLayout.vue";
 import About from "./views/About/Index.vue";
 import Main from "./views/Main/Index.vue";
-import TestiMony from "./views/Testimony/Index.vue";
+import Testimony from "./views/Testimony/Index.vue";
 import Article from "./views/Article/Index.vue";
 
 const routes = [
@@ -19,8 +19,8 @@ const routes = [
     children: [
       { path: "main", name: "Main", component: Main },
       { path: "about", name: "About", component: About },
-      { path: "testimony/:id", name: "Testimony", component: TestiMony },
-      { path: "article", name: "Article", component: Article },
+      { path: "testimony/:id", name: "Testimony", component: Testimony },
+      { path: "article/:id", name: "Article", component: Article },
     ],
   },
 ];
