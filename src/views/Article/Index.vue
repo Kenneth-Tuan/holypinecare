@@ -25,8 +25,9 @@ const articleTitle = computed(
   () => articlesTable.find((article) => article.key === articleId.value)?.title
 );
 const articleRef = ref(null);
-const url = `/src/articles/${articleTitle.value.toString()}.pdf`;
-
+const url = computed(
+  () => `/src/articles/${articleTitle.value.toString()}.pdf`
+);
 const current = ref(1);
 const pageCount = ref(0);
 
@@ -45,30 +46,28 @@ watch(
   () => {
     route.params.id;
   },
-  async () => {
-    pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-      pdfDoc = pdfDoc_;
-      pageCount.value = pdfDoc.numPages;
-
-      // Initial/first page rendering
-      renderPage(pageNum);
-    });
+  () => {
+    getPDFDocument();
   },
   { deep: true }
 );
 
 onMounted(() => {
-  /**
-   * Asynchronously downloads PDF.
-   */
-  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+  getPDFDocument();
+});
+
+/**
+ * Asynchronously downloads PDF.
+ */
+function getPDFDocument() {
+  pdfjsLib.getDocument(url.value).promise.then(function (pdfDoc_) {
     pdfDoc = pdfDoc_;
     pageCount.value = pdfDoc.numPages;
 
     // Initial/first page rendering
     renderPage(pageNum);
   });
-});
+}
 
 function renderPage(num) {
   pageRendering = true;
