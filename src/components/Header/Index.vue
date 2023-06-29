@@ -21,11 +21,11 @@
       <a-sub-menu v-for="menuItem in menuTree" :key="menuItem.key">
         <template #title>{{ menuItem.title }}</template>
 
-        <a-sub-menu
-          v-for="menuSubItem in menuItem.children"
-          :key="menuSubItem.key"
-        >
-          <div v-if="menuItem.hasMinorChildren" class="">
+        <div v-if="menuItem.hasMinorChildren" class="">
+          <a-sub-menu
+            v-for="menuSubItem in menuItem.children"
+            :key="menuSubItem.key"
+          >
             <template #title>{{ menuSubItem.title }}</template>
             <router-link
               v-for="menuMinorSubItem in menuSubItem.children"
@@ -36,13 +36,19 @@
                 {{ menuMinorSubItem.title }}
               </a-menu-item>
             </router-link>
-          </div>
-          <router-link v-else :to="`/${menuItem.type}/${menuSubItem.key}`">
+          </a-sub-menu>
+        </div>
+        <template v-else>
+          <router-link
+            v-for="menuSubItem in menuItem.children"
+            :key="menuSubItem.key"
+            :to="`/${menuItem.type}/${menuSubItem.key}`"
+          >
             <a-menu-item :key="menuSubItem.key">
               {{ menuSubItem.title }}
             </a-menu-item>
           </router-link>
-        </a-sub-menu>
+        </template>
       </a-sub-menu>
     </a-menu>
   </div>
