@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import Antd from "ant-design-vue";
 import App from "./App.vue";
 import "ant-design-vue/dist/antd.css";
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHashHistory, createRouter } from "vue-router";
 
 import "./styles/base.scss";
 import BaseLayout from "./layout/BaseLayout.vue";
