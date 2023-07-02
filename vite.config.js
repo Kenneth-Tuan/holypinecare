@@ -7,11 +7,11 @@ export default defineConfig({
   build: {
     minify: true,
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     "@": path.resolve(__dirname, "./src"),
+  //   },
+  // },
   base:
     process.env.NODE_ENV === "production"
       ? "https://github.com/Kenneth-Tuan/holypinecare.git"
