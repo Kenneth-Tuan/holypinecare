@@ -9,7 +9,7 @@
     </a-carousel>
   </div>
 
-  <div class="flex flex-row justify-center">
+  <div class="flex flex-row justify-between">
     <iframe
       width="560"
       height="315"

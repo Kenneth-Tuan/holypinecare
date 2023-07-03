@@ -1,6 +1,6 @@
 <template>
   <div
-    class="header-container px-8 flex flex-row no-wrap justify-between shadow-md bg-sky-200"
+    class="header-container px-8 flex flex-row no-wrap justify-between shadow-md bg-white"
   >
     <div class="flex flex-col pb-2">
       <h1 class="text-[36px] mr-4 header-font-color">HolyPineCare</h1>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <a-menu
-      class="header-menu pt-6 bg-sky-200"
+      class="header-menu pt-6"
       v-model:selectedKeys="current"
       mode="horizontal"
     >

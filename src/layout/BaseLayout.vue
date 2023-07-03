@@ -6,7 +6,7 @@ import Footer from "../components/Footer/Index.vue";
 <template>
   <div class="holyPineCare-container flex flex-col">
     <Header class="flex-none" />
-    <main class="holyPineCare-container__main mx-auto pt-4 flex-grow">
+    <main class="holyPineCare-container__main mx-auto pt-4 pb-24 flex-grow">
       <router-view />
     </main>
     <Footer class="flex-none" />
@@ -18,6 +18,11 @@ import Footer from "../components/Footer/Index.vue";
   width: 100%;
   height: 100%;
   min-height: 100vh;
+  background: linear-gradient(
+    60deg,
+    rgba(84, 58, 183, 1) 0%,
+    rgba(0, 172, 193, 1) 100%
+  );
 
   &__main {
     width: 1280px;

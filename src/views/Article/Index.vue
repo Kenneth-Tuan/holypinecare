@@ -1,7 +1,7 @@
 <template>
   <div class="article-wrapper pb-12">
-    <div class="flex flew-row justify-center">
-      <canvas ref="articleRef" id="article"></canvas>
+    <div class="flex flew-row justify-center mb-12">
+      <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
     </div>
 
     <div class="flex flex-row justify-center">
@@ -79,6 +79,9 @@ function renderPage(num) {
     var viewport = page.getViewport({ scale });
     canvas.height = viewport.height;
     canvas.width = viewport.width;
+    // canvas.style = { "background-color": rgba(255, 0, 0, 0.5) };
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Render PDF page into canvas context
     var renderContext = {
@@ -117,4 +120,17 @@ function onChange() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.article-wrapper {
+  :deep() {
+    .ant-pagination {
+      &-prev,
+      &-item,
+      &-item-link,
+      &-next {
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+      }
+    }
+  }
+}
+</style>

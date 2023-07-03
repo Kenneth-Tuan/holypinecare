@@ -2,7 +2,7 @@
   <div class="about">
     <div class="page-title-wrapper">
       <p class="page-title-content">Holy Pine Care</p>
-      <p class="text-gray-500 text-lg">非藥之藥：氫氣免疫療法</p>
+      <p class="text-gray-200 text-lg">非藥之藥：氫氣免疫療法</p>
     </div>
     <div class="flex flex-row justify-between mb-12">
       <div class="about-card">
@@ -25,7 +25,7 @@
 
 <style lang="scss" scoped>
 .about-card {
-  @apply w-1/4 shadow-lg shadow-blue-500/40 hover:shadow-indigo-500/40 rounded-lg flex flex-col items-center justify-center gap-4 p-6;
+  @apply w-1/4 shadow-lg shadow-blue-500/40 hover:shadow-indigo-500/40 rounded-lg flex flex-col items-center justify-center gap-4 p-6 bg-gray-200;
 
   &__content {
     @apply font-sans;
