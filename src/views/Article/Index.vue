@@ -28,7 +28,7 @@ const articleTitle = computed(
 );
 const articleRef = ref(null);
 const url = computed(
-  () => `/src/articles/${articleTitle.value?.toString()}.pdf`
+  () => `/src/assets/articles/${articleTitle.value?.toString()}.pdf`
 );
 const current = ref(1);
 const pageCount = ref(0);
