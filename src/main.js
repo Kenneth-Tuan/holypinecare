@@ -9,7 +9,6 @@ import BaseLayout from "./layout/BaseLayout.vue";
 import Introduction from "./views/About/Introduction.vue";
 import ContactUs from "./views/About/ContactUs.vue";
 import Main from "./views/Main/Index.vue";
-import Testimony from "./views/Testimony/Index.vue";
 import Article from "./views/Article/Index.vue";
 import Seminar from "./views/Seminar/Index.vue";
 
