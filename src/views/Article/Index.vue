@@ -22,7 +22,6 @@ import { useRoute } from "vue-router";
 import { articlesTable } from ".";
 
 const route = useRoute();
-const router = useRouter();
 const articleId = computed(() => route.params.id);
 const articleTitle = computed(
   () => articlesTable.find((article) => article.key === articleId.value)?.title

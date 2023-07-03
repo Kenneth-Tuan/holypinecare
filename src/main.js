@@ -6,10 +6,12 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import "./styles/base.scss";
 import BaseLayout from "./layout/BaseLayout.vue";
-import About from "./views/About/Index.vue";
+import Introduction from "./views/About/Introduction.vue";
+import ContactUs from "./views/About/ContactUs.vue";
 import Main from "./views/Main/Index.vue";
 import Testimony from "./views/Testimony/Index.vue";
 import Article from "./views/Article/Index.vue";
+import Seminar from "./views/Seminar/Index.vue";
 
 const routes = [
   {
@@ -22,12 +24,17 @@ const routes = [
         path: "about",
         redirect: { name: "Introduction" },
         children: [
-          { path: "contact-us", name: "ContactUs", component: About },
-          { path: "introduction", name: "Introduction", component: About },
+          { path: "contact-us", name: "ContactUs", component: ContactUs },
+          {
+            path: "introduction",
+            name: "Introduction",
+            component: Introduction,
+          },
         ],
       },
       { path: "testimony/:id", name: "Testimony", component: Testimony },
       { path: "article/:id", name: "Article", component: Article },
+      { path: "seminar/:id", name: "Seminar", component: Seminar },
     ],
   },
 ];
