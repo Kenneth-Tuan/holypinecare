@@ -1,26 +1,63 @@
 <template>
-  <div class="header-container px-8 flex flex-row no-wrap justify-between shadow-md">
+  <div
+    class="header-container px-8 flex flex-row no-wrap justify-between shadow-md bg-white"
+  >
     <div class="flex flex-col pb-2">
-      <h1 class="text-[36px] mr-4">HolyPineCare</h1>
+      <h1 class="text-[36px] mr-4 header-font-color">HolyPineCare</h1>
       <div class="flex flex-row">
-        <p class="text-[8px] mr-4">健康～好青松</p>
-        <p class="text-[8px]">給～醫療難民一個輔助醫療的選擇</p>
+        <p class="text-[8px] mr-4 header-font-color">健康～好青松</p>
+        <p class="text-[8px] header-font-color">
+          給～醫療難民一個輔助醫療的選擇
+        </p>
       </div>
     </div>
-    <a-menu class="header-menu pt-6" v-model:selectedKeys="current" mode="horizontal">
+    <a-menu
+      class="header-menu pt-6"
+      v-model:selectedKeys="current"
+      mode="horizontal"
+    >
       <a-menu-item key="main">
-        <router-link to="/main"> 首頁 </router-link>
+        <router-link to="/main" class="header-font-color"> 首頁 </router-link>
       </a-menu-item>
-      <a-sub-menu v-for="menuItem in menuTree" :key="menuItem.key">
-        <template #title>{{ menuItem.title }}</template>
-        <a-sub-menu v-for="menuSubItem in menuItem.children" :key="menuSubItem.key">
-          <template #title>{{ menuSubItem.title }}</template>
 
-          <router-link v-for="menuMinorSubItem in menuSubItem.children" :key="menuMinorSubItem.key"
-            :to="`/${menuItem.type}/${menuMinorSubItem.key}`">
-            <a-menu-item :key="menuMinorSubItem.key">{{ menuMinorSubItem.title }} </a-menu-item>
+      <a-sub-menu v-for="menuItem in menuTree" :key="menuItem.key">
+        <template #title class="header-font-color">
+          {{ menuItem.title }}
+        </template>
+
+        <div v-if="menuItem.hasMinorChildren" class="">
+          <a-sub-menu
+            v-for="menuSubItem in menuItem.children"
+            :key="menuSubItem.key"
+          >
+            <template #title class="header-font-color">{{
+              menuSubItem.title
+            }}</template>
+            <router-link
+              v-for="menuMinorSubItem in menuSubItem.children"
+              :key="menuMinorSubItem.key"
+              :to="`/${menuItem.type}/${menuMinorSubItem.key}`"
+            >
+              <a-menu-item
+                :key="menuMinorSubItem.key"
+                class="header-font-color"
+              >
+                {{ menuMinorSubItem.title }}
+              </a-menu-item>
+            </router-link>
+          </a-sub-menu>
+        </div>
+        <template v-else>
+          <router-link
+            v-for="menuSubItem in menuItem.children"
+            :key="menuSubItem.key"
+            :to="`/${menuItem.type}/${menuSubItem.key}`"
+          >
+            <a-menu-item :key="menuSubItem.key" class="header-font-color">
+              {{ menuSubItem.title }}
+            </a-menu-item>
           </router-link>
-        </a-sub-menu>
+        </template>
       </a-sub-menu>
     </a-menu>
   </div>
@@ -28,20 +65,23 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { menuList } from './index'
-
+import { menuList } from "./index";
 
 const current = ref(["main"]);
-const menuTree = computed(() => menuList)
-
+const menuTree = computed(() => menuList);
 </script>
 
 <style lang="scss" scoped>
 .header {
-  &-conainer {}
+  &-conainer {
+  }
 
   &-menu {
     width: max-content;
+  }
+
+  &-font-color {
+    @apply text-gray-600;
   }
 }
 </style>

@@ -47,4 +47,13 @@ body {
   }
 }
 
+@layer components {
+  .page-title-wrapper {
+    @apply flex flex-col justify-center items-center w-full my-6
+  }
+  .page-title-content {
+    @apply text-6xl antialiased font-semibold mb-6 text-gray-200
+  }
+}
+
 

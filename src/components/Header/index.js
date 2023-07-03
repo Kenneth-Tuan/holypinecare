@@ -3,6 +3,7 @@ export const menuList = [
     key: "about",
     type: "about",
     title: "關於我們",
+    hasMinorChildren: false,
     children: [
       { key: "introduction", title: "簡介" },
       { key: "contact-us", title: "聯絡我們" },
@@ -12,6 +13,7 @@ export const menuList = [
     key: "ddw",
     type: "article",
     title: "低氘水",
+    hasMinorChildren: true,
     children: [
       {
         key: "2-1",
@@ -136,6 +138,7 @@ export const menuList = [
     key: "hydrogen",
     type: "article",
     title: "氫氣氫水",
+    hasMinorChildren: true,
     children: [
       {
         key: "3-1",
@@ -261,6 +264,7 @@ export const menuList = [
     key: "seminar",
     type: "seminar",
     title: "醫師開講",
+    hasMinorChildren: false,
     children: [
       { key: "5-1", title: "施文儀" },
       { key: "5-2", title: "鐘南山" },
@@ -274,12 +278,14 @@ export const menuList = [
     key: "product",
     type: "product",
     title: "產品",
+    hasMinorChildren: true,
     children: [],
   },
   {
     key: "testimony",
     type: "article",
     title: "見證",
+    hasMinorChildren: false,
     children: [
       {
         key: "6-1",

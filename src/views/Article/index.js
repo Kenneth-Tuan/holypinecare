@@ -17,7 +17,7 @@ export const articlesTable = [
   },
   {
     key: "6-5",
-    title: "自律神經失調",
+    title: "自律神經失調 失眠",
   },
   {
     key: "6-6",

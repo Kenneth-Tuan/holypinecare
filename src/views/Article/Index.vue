@@ -1,13 +1,18 @@
 <template>
-  <div class="flex flew-row justify-center">
-    <canvas ref="articleRef" id="article"></canvas>
-  </div>
+  <div class="article-wrapper pb-12">
+    <div class="flex flew-row justify-center mb-12">
+      <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
+    </div>
 
-  <div>
-    <button id="prev">Previous</button>
-    <button id="next">Next</button>
-    &nbsp; &nbsp;
-    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    <div class="flex flex-row justify-center">
+      <a-pagination
+        v-model:current="current"
+        :total="Number(pageCount)"
+        :pageSize="1"
+        show-less-items
+        @change="onChange()"
+      />
+    </div>
   </div>
 </template>
 
@@ -18,64 +23,70 @@ import { articlesTable } from ".";
 
 const route = useRoute();
 const articleId = computed(() => route.params.id);
-const articleTitle = computed(() => articlesTable.find((article) => article.key === articleId.value)?.title)
+const articleTitle = computed(
+  () => articlesTable.find((article) => article.key === articleId.value)?.title
+);
 const articleRef = ref(null);
-const url = `/src/articles/${articleTitle.value.toString()}.pdf`;
+const url = computed(
+  () => `/src/articles/${articleTitle.value?.toString()}.pdf`
+);
+const current = ref(1);
+const pageCount = ref(0);
 
 let pdfjsLib = window["pdfjs-dist/build/pdf"];
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "//mozilla.github.io/pdf.js/build/pdf.worker.js";
 
-let pdfDoc = null
-let pageNum = 1
-let pageRendering = false
-let pageNumPending = null
-let scale = 2
+let pdfDoc = null;
+let pageNum = 1;
+let pageRendering = false;
+let pageNumPending = null;
+let scale = 2;
 
-watch(() => { route.params.id }, async () => {
-  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-    pdfDoc = pdfDoc_;
-    document.getElementById('page_count').textContent = pdfDoc.numPages;
-
-    // Initial/first page rendering
-    renderPage(pageNum);
-  });
-}, { deep: true })
+watch(
+  () => {
+    route.params;
+  },
+  () => {
+    getPDFDocument();
+  },
+  { deep: true, immediate: true }
+);
 
 onMounted(() => {
+  // getPDFDocument();
+});
 
-  document.getElementById('next').addEventListener('click', onNextPage);
-
-  document.getElementById('prev').addEventListener('click', onPrevPage);
-
-  /**
-   * Asynchronously downloads PDF.
-   */
-  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+/**
+ * Asynchronously downloads PDF.
+ */
+function getPDFDocument() {
+  pdfjsLib.getDocument(url.value).promise.then(function (pdfDoc_) {
     pdfDoc = pdfDoc_;
-    document.getElementById('page_count').textContent = pdfDoc.numPages;
-
+    pageCount.value = pdfDoc.numPages;
     // Initial/first page rendering
     renderPage(pageNum);
   });
-});
+}
 
 function renderPage(num) {
   pageRendering = true;
   // Using promise to fetch the page
   pdfDoc.getPage(num).then(function (page) {
-
-    let canvas = articleRef.value
-    let ctx = canvas.getContext('2d')
+    let canvas = articleRef.value;
+    let ctx = canvas.getContext("2d");
     var viewport = page.getViewport({ scale });
     canvas.height = viewport.height;
     canvas.width = viewport.width;
+    // canvas.style = { "background-color": rgba(255, 0, 0, 0.5) };
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Render PDF page into canvas context
     var renderContext = {
       canvasContext: ctx,
-      viewport: viewport
+      viewport: viewport,
     };
     var renderTask = page.render(renderContext);
 
@@ -89,9 +100,6 @@ function renderPage(num) {
       }
     });
   });
-
-  // Update page counters
-  document.getElementById('page_num').textContent = num;
 }
 
 /**
@@ -106,31 +114,23 @@ function queueRenderPage(num) {
   }
 }
 
-/**
- * Displays previous page.
- */
-function onPrevPage() {
-  if (pageNum <= 1) {
-    return;
-  }
-  pageNum--;
-  queueRenderPage(pageNum);
+function onChange() {
+  window.scrollTo(0, 0);
+  queueRenderPage(current.value);
 }
-
-
-/**
- * Displays next page.
- */
-function onNextPage() {
-  if (pageNum >= pdfDoc.numPages) {
-    return;
-  }
-  pageNum++;
-  queueRenderPage(pageNum);
-}
-
-
-
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.article-wrapper {
+  :deep() {
+    .ant-pagination {
+      &-prev,
+      &-item,
+      &-item-link,
+      &-next {
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+      }
+    }
+  }
+}
+</style>
