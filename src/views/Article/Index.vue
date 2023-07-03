@@ -5,13 +5,8 @@
     </div>
 
     <div class="flex flex-row justify-center">
-      <a-pagination
-        v-model:current="current"
-        :total="Number(pageCount)"
-        :pageSize="1"
-        show-less-items
-        @change="onChange()"
-      />
+      <a-pagination v-model:current="current" :total="Number(pageCount)" :pageSize="1" show-less-items
+        @change="onChange()" />
     </div>
   </div>
 </template>
@@ -28,7 +23,7 @@ const articleTitle = computed(
 );
 const articleRef = ref(null);
 const url = computed(
-  () => `/src/assets/articles/${articleTitle.value?.toString()}.pdf`
+  () => `/public/articles/${articleTitle.value?.toString()}.pdf`
 );
 const current = ref(1);
 const pageCount = ref(0);
@@ -124,6 +119,7 @@ function onChange() {
 .article-wrapper {
   :deep() {
     .ant-pagination {
+
       &-prev,
       &-item,
       &-item-link,
