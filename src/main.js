@@ -18,7 +18,14 @@ const routes = [
     component: BaseLayout,
     children: [
       { path: "main", name: "Main", component: Main },
-      { path: "about", name: "About", component: About },
+      {
+        path: "about",
+        redirect: { name: "Introduction" },
+        children: [
+          { path: "contact-us", name: "ContactUs", component: About },
+          { path: "introduction", name: "Introduction", component: About },
+        ],
+      },
       { path: "testimony/:id", name: "Testimony", component: Testimony },
       { path: "article/:id", name: "Article", component: Article },
     ],

@@ -1,16 +1,18 @@
 <template>
-  <div class="flex flew-row justify-center">
-    <canvas ref="articleRef" id="article"></canvas>
-  </div>
+  <div class="article-wrapper pb-12">
+    <div class="flex flew-row justify-center">
+      <canvas ref="articleRef" id="article"></canvas>
+    </div>
 
-  <div class="flex flex-row justify-center">
-    <a-pagination
-      v-model:current="current"
-      :total="Number(pageCount)"
-      :pageSize="1"
-      show-less-items
-      @change="onChange()"
-    />
+    <div class="flex flex-row justify-center">
+      <a-pagination
+        v-model:current="current"
+        :total="Number(pageCount)"
+        :pageSize="1"
+        show-less-items
+        @change="onChange()"
+      />
+    </div>
   </div>
 </template>
 
@@ -20,13 +22,14 @@ import { useRoute } from "vue-router";
 import { articlesTable } from ".";
 
 const route = useRoute();
+const router = useRouter();
 const articleId = computed(() => route.params.id);
 const articleTitle = computed(
   () => articlesTable.find((article) => article.key === articleId.value)?.title
 );
 const articleRef = ref(null);
 const url = computed(
-  () => `/src/articles/${articleTitle.value.toString()}.pdf`
+  () => `/src/articles/${articleTitle.value?.toString()}.pdf`
 );
 const current = ref(1);
 const pageCount = ref(0);
@@ -44,16 +47,16 @@ let scale = 2;
 
 watch(
   () => {
-    route.params.id;
+    route.params;
   },
   () => {
     getPDFDocument();
   },
-  { deep: true }
+  { deep: true, immediate: true }
 );
 
 onMounted(() => {
-  getPDFDocument();
+  // getPDFDocument();
 });
 
 /**
@@ -63,7 +66,6 @@ function getPDFDocument() {
   pdfjsLib.getDocument(url.value).promise.then(function (pdfDoc_) {
     pdfDoc = pdfDoc_;
     pageCount.value = pdfDoc.numPages;
-
     // Initial/first page rendering
     renderPage(pageNum);
   });
