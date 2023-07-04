@@ -5,8 +5,13 @@
     </div>
 
     <div class="flex flex-row justify-center">
-      <a-pagination v-model:current="current" :total="Number(pageCount)" :pageSize="1" show-less-items
-        @change="onChange()" />
+      <a-pagination
+        v-model:current="current"
+        :total="Number(pageCount)"
+        :pageSize="1"
+        show-less-items
+        @change="onChange()"
+      />
     </div>
   </div>
 </template>
@@ -22,11 +27,6 @@ const articleTitle = computed(
   () => articlesTable.find((article) => article.key === articleId.value)?.title
 );
 const articleRef = ref(null);
-<<<<<<< HEAD
-const url = computed(
-  () => `/public/articles/${articleTitle.value?.toString()}.pdf`
-);
-=======
 const url = computed(() => {
   if (import.meta.env.DEV) {
     return `/src/articles/${articleTitle.value?.toString()}.pdf`;
@@ -34,7 +34,6 @@ const url = computed(() => {
     return `/holypinecare/articles/${articleTitle.value?.toString()}.pdf`;
   }
 });
->>>>>>> ea64f19 (fix: add diff pdf import path for prod)
 const current = ref(1);
 const pageCount = ref(0);
 
@@ -129,7 +128,6 @@ function onChange() {
 .article-wrapper {
   :deep() {
     .ant-pagination {
-
       &-prev,
       &-item,
       &-item-link,
