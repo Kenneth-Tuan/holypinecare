@@ -31,7 +31,6 @@ const routes = [
           },
         ],
       },
-      { path: "testimony/:id", name: "Testimony", component: Testimony },
       { path: "article/:id", name: "Article", component: Article },
       { path: "seminar/:id", name: "Seminar", component: Seminar },
     ],
