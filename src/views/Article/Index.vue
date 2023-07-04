@@ -22,9 +22,19 @@ const articleTitle = computed(
   () => articlesTable.find((article) => article.key === articleId.value)?.title
 );
 const articleRef = ref(null);
+<<<<<<< HEAD
 const url = computed(
   () => `/public/articles/${articleTitle.value?.toString()}.pdf`
 );
+=======
+const url = computed(() => {
+  if (import.meta.env.DEV) {
+    return `/src/articles/${articleTitle.value?.toString()}.pdf`;
+  } else {
+    return `/holypinecare/articles/${articleTitle.value?.toString()}.pdf`;
+  }
+});
+>>>>>>> ea64f19 (fix: add diff pdf import path for prod)
 const current = ref(1);
 const pageCount = ref(0);
 
