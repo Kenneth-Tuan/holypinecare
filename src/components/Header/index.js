@@ -271,7 +271,8 @@ export const menuList = [
       { key: "5-3", title: "徐克成" },
       { key: "5-4", title: "孫學軍" },
       { key: "5-5", title: "太田成男" },
-      { key: "5-6", title: "赤木純兒" },
+      { key: "5-6", title: "張民傑" },
+      { key: "5-7", title: "王復蘇" },
     ],
   },
   // {
