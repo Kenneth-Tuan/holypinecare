@@ -274,13 +274,34 @@ export const menuList = [
       { key: "5-6", title: "赤木純兒" },
     ],
   },
-  {
-    key: "product",
-    type: "product",
-    title: "產品",
-    hasMinorChildren: true,
-    children: [],
-  },
+  // {
+  //   key: "products",
+  //   type: "products",
+  //   title: "產品",
+  //   hasMinorChildren: false,
+  //   children: [
+  //     {
+  //       key: "7-1",
+  //       title: "氫氣機",
+  //     },
+  //     {
+  //       key: "7-2",
+  //       title: "氫浴機",
+  //     },
+  //     {
+  //       key: "7-3",
+  //       title: "氫水機",
+  //     },
+  //     {
+  //       key: "7-4",
+  //       title: "氫水杯",
+  //     },
+  //     {
+  //       key: "7-5",
+  //       title: "低氘水",
+  //     },
+  //   ],
+  // },
   {
     key: "testimony",
     type: "article",
