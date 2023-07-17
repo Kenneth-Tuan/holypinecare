@@ -12,7 +12,7 @@ import Main from "./views/Main/Index.vue";
 import Article from "./views/Article/Index.vue";
 import Seminar from "./views/Seminar/Index.vue";
 import Products from "./views/Products/Index.vue";
-// import Product from "./views/Product/Index.vue";
+import Product from "./views/Product/Index.vue";
 
 const routes = [
   {
@@ -36,7 +36,7 @@ const routes = [
       { path: "article/:id", name: "Article", component: Article },
       { path: "seminar/:id", name: "Seminar", component: Seminar },
       { path: "products", name: "Products", component: Products },
-      // { path: "products/:id", name: "Product", component: Product },
+      { path: "products/:id", name: "Product", component: Product },
     ],
   },
 ];

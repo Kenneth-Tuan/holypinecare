@@ -19,9 +19,14 @@
             <span class="text-2xl text-orange-600">
                 ￥
             </span>
-            <span class="text-3xl text-orange-600">
+            <span class="text-3xl text-orange-600" :class="[{ 'line-through': hasDiscount }, { 'text-xl': hasDiscount }]">
                 {{ checkedPrice }}
             </span>
+            <template v-if="hasDiscount">
+                <span class="text-3xl text-orange-600 ml-3">
+                    {{ productDiscount.toLocaleString() }}
+                </span>
+            </template>
         </div>
     </div>
 </template>
@@ -33,10 +38,13 @@ const props = defineProps({
     banner: String,
     productName: String,
     productDescription: String,
-    productPrice: Number
+    productPrice: Number,
+    productDiscount: Number
 })
 
 const checkedPrice = computed(() => props.productPrice ? props.productPrice.toLocaleString() : '-')
+
+const hasDiscount = computed(() => props.productDiscount < props.productPrice ? true : false)
 
 </script>
 
