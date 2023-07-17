@@ -16,18 +16,21 @@
             {{ productDescription ?? 'lorum' }}
         </div>
         <div class="product-price">
-            <span class="text-2xl text-orange-600">
-                ￥
+            <span class="text-3xl text-gray-900" :class="[{ 'line-through': hasDiscount }]">
+                NT$
             </span>
-            <span class="text-3xl text-orange-600" :class="[{ 'line-through': hasDiscount }, { 'text-xl': hasDiscount }]">
-                {{ checkedPrice }}
+            <span class="text-3xl text-gray-900" :class="[{ 'line-through': hasDiscount }]">
+                {{ checkedPrice }} {{ productUnit ? `/ ${productUnit}` : '' }}
             </span>
-            <template v-if="hasDiscount">
-                <span class="text-3xl text-orange-600 ml-3">
-                    {{ productDiscount.toLocaleString() }}
-                </span>
-            </template>
         </div>
+        <template v-if="hasDiscount">
+            <span class="text-3xl text-orange-600">
+                NT$
+            </span>
+            <span class="text-3xl text-orange-600">
+                {{ productDiscount.toLocaleString() }} {{ productUnit ? `/ ${productUnit}` : '' }}
+            </span>
+        </template>
     </div>
 </template>
 
@@ -39,7 +42,8 @@ const props = defineProps({
     productName: String,
     productDescription: String,
     productPrice: Number,
-    productDiscount: Number
+    productDiscount: Number,
+    productUnit: String
 })
 
 const checkedPrice = computed(() => props.productPrice ? props.productPrice.toLocaleString() : '-')

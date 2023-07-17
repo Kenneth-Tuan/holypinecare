@@ -1,5 +1,9 @@
 export const articlesTable = [
   {
+    key: "6-8",
+    title: "睡眠與調經",
+  },
+  {
     key: "6-1",
     title: "巴金森氏症",
   },

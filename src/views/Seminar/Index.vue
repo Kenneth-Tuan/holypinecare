@@ -123,6 +123,19 @@
         </div>
       </div>
     </template>
+
+
+    <template v-if="seminarId === '5-8'">
+      <div class="flex flex-col gap-y-20">
+        <div class="flex flex-col items-center">
+          <span class="seminar-subtitle">癌症之氢气免疫疗法</span>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/bGDQQqqsm4Y" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 

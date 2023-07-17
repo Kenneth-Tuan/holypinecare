@@ -16,10 +16,10 @@
         <p class="page-title-content">關於氫氣療法</p>
         <div class="bg-gray-300 h-[1px] w-3/4"></div>
       </div>
-      <p class="text-left text-white text-2xl px-20 pb-5">
+      <p class="text-left text-white text-2xl px-48 pb-5">
         氫氣療法是一種使用氫氣進行治療的療法，被認為能夠提供多種健康益處。氫氣具有強大的抗氧化性質，能夠中和自由基，減少細胞損傷，改善健康狀態。
       </p>
-      <p class="text-left text-white text-2xl px-20">
+      <p class="text-left text-white text-2xl px-48">
         氫氣療法通常通過吸入氫氣、飲用氫氣水或浸泡身體部位來實施。它已被廣泛研究，並被認為對許多健康問題有益，包括減輕炎症、改善皮膚狀態、增強免疫力等。
       </p>
     </div>
@@ -64,21 +64,9 @@
     <div class="w-full flex flex-row justify-between gap-12">
       <div class="main__product-card">
         <div class="main__image-wrapper">
-          <img :src="getProductsImage('低氘水1.jpg')" alt="">
+          <img :src="getProductsImage('納諾巴伯3.jpg')" alt="">
         </div>
-        <div class="main__product-name">低氘水</div>
-      </div>
-      <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('氫水杯3.jpg')" alt="">
-        </div>
-        <div class="main__product-name">氫水杯</div>
-      </div>
-      <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('氫水機3.jpg')" alt="">
-        </div>
-        <div class="main__product-name">氫水機</div>
+        <div class="main__product-name">氫氣機</div>
       </div>
       <div class="main__product-card">
         <div class="main__image-wrapper">
@@ -88,9 +76,21 @@
       </div>
       <div class="main__product-card">
         <div class="main__image-wrapper">
-          <img :src="getProductsImage('納諾巴伯3.jpg')" alt="">
+          <img :src="getProductsImage('氫水機3.jpg')" alt="">
         </div>
-        <div class="main__product-name">氫氣機</div>
+        <div class="main__product-name">氫水機</div>
+      </div>
+      <div class="main__product-card">
+        <div class="main__image-wrapper">
+          <img :src="getProductsImage('氫水杯3.jpg')" alt="">
+        </div>
+        <div class="main__product-name">氫水杯</div>
+      </div>
+      <div class="main__product-card">
+        <div class="main__image-wrapper">
+          <img :src="getProductsImage('低氘水1.jpg')" alt="">
+        </div>
+        <div class="main__product-name">低氘水</div>
       </div>
     </div>
   </div>
