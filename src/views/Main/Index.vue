@@ -60,35 +60,45 @@
       <div class="bg-gray-300 h-[1px] w-3/4"></div>
     </div>
     <div class="w-full flex flex-row justify-between gap-12">
-      <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('納諾巴伯3.jpg')" alt="">
+      <router-link to="/products/7-1">
+        <div class="main__product-card">
+          <div class="main__image-wrapper">
+            <img :src="getProductsImage('納諾巴伯3.jpg')" alt="">
+          </div>
+          <div class="main__product-name">氫氣機</div>
         </div>
-        <div class="main__product-name">氫氣機</div>
+      </router-link>
+      <div class="main__product-card">
+        <router-link to="/products/7-2">
+          <div class="main__image-wrapper">
+            <img :src="getProductsImage('氫浴機3.jpg')" alt="">
+          </div>
+          <div class="main__product-name">氫浴機</div>
+        </router-link>
       </div>
       <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('氫浴機3.jpg')" alt="">
-        </div>
-        <div class="main__product-name">氫浴機</div>
+        <router-link to="/products/7-3">
+          <div class="main__image-wrapper">
+            <img :src="getProductsImage('氫水機3.jpg')" alt="">
+          </div>
+          <div class="main__product-name">氫水機</div>
+        </router-link>
       </div>
       <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('氫水機3.jpg')" alt="">
-        </div>
-        <div class="main__product-name">氫水機</div>
+        <router-link to="/products/7-4">
+          <div class="main__image-wrapper">
+            <img :src="getProductsImage('氫水杯3.jpg')" alt="">
+          </div>
+          <div class="main__product-name">氫水杯</div>
+        </router-link>
       </div>
       <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('氫水杯3.jpg')" alt="">
-        </div>
-        <div class="main__product-name">氫水杯</div>
-      </div>
-      <div class="main__product-card">
-        <div class="main__image-wrapper">
-          <img :src="getProductsImage('低氘水1.jpg')" alt="">
-        </div>
-        <div class="main__product-name">低氘水</div>
+        <router-link to="/products/7-5">
+          <div class="main__image-wrapper">
+            <img :src="getProductsImage('低氘水1.jpg')" alt="">
+          </div>
+          <div class="main__product-name">低氘水</div>
+        </router-link>
       </div>
     </div>
   </div>

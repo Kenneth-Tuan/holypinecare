@@ -21,9 +21,9 @@
 
         <div v-if="menuItem.hasMinorChildren" class="">
           <a-sub-menu v-for="menuSubItem in menuItem.children" :key="menuSubItem.key">
-            <template #title class="header-font-color">{{
-              menuSubItem.title
-            }}</template>
+            <template #title class="header-font-color">
+              {{ menuSubItem.title }}
+            </template>
             <router-link v-for="menuMinorSubItem in menuSubItem.children" :key="menuMinorSubItem.key"
               :to="`/${menuItem.type}/${menuMinorSubItem.key}`">
               <a-menu-item :key="menuMinorSubItem.key" class="header-font-color">

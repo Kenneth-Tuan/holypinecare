@@ -43,6 +43,10 @@
             <div class="flex flew-row justify-center mb-12">
                 <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
             </div>
+            <div class="flex flex-row justify-center">
+                <a-pagination v-model:current="current" :total="Number(pageCount)" :pageSize="1" show-less-items
+                    @change="onChange()" />
+            </div>
         </div>
     </div>
 </template>

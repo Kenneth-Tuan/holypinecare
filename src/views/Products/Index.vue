@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="products-wrapper bg-slate-100 grid grid-cols-3 gap-4 rounded-xl p-6">
-            <router-link v-for="product in productList" :key="product.id" :to="`/products/${product.id}`">
+            <router-link v-for="product in productList" :key="product.id" :to="`/products/${product.productId}`">
                 <ProductCard :product-name="product.name" :product-price="product.price"
                     :product-discount="product.discount" :product-description="product.description"
                     :product-unit="product.unit" :banner="getProductsImage(product.bannerImage)" />
