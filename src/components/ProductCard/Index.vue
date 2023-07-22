@@ -3,11 +3,6 @@
         <div
             class="product-img w-full h-max rounded-xl mb-4 overflow-hidden bg-white flex flex-row justify-center items-center">
             <img class="w-80 h-80" :src="banner" alt="">
-            <!-- <a-carousel autoplay>
-                <div class="w-full h-full" v-for="(imageUrl, index) in productImgList" :key="index">
-                    <img :src="imageUrl" alt="">
-                </div>
-            </a-carousel> -->
         </div>
         <div class="product-name text-3xl mb-4 font-semibold">
             {{ productName ?? 'lorum' }}
@@ -20,7 +15,7 @@
                 NT$
             </span>
             <span class="text-3xl text-gray-900" :class="[{ 'line-through': hasDiscount }]">
-                {{ checkedPrice }} {{ productUnit ? `/ ${productUnit}` : '' }}
+                {{ checkedPrice.toLocaleString() }} {{ productUnit ? `/ ${productUnit}` : '' }}
             </span>
         </div>
         <template v-if="hasDiscount">

@@ -1,34 +1,165 @@
 <template>
     <div>
         <div class="product-container">
-            <div class="product-name">氫氣療法器</div>
-            <div class="product-image">
-                <img src="https://example.com/product-image.jpg" alt="氫氣療法器">
+            <div class="page-title-wrapper">
+                <p class="page-title-content">{{ product.name }}</p>
+                <div class="bg-gray-300 h-[1px] w-3/4"></div>
             </div>
-            <div class="product-price">產品價格：$199.99</div>
-            <div class="product-features">
-                <ul>
-                    <li>強大的抗氧化保護，中和自由基，減少細胞損傷。</li>
-                    <li>減輕炎症反應，緩解疼痛和不適感。</li>
-                    <li>皮膚健康改善，減少皺紋、斑點和其他皮膚問題。</li>
-                    <li>增強免疫力，提高身體抵抗力。</li>
-                    <li>促進細胞修復和再生，改善身體組織和器官功能。</li>
-                    <li>強大的抗氧化作用，延緩衰老過程。</li>
-                </ul>
+            <div class="grid grid-rows-2 grid-flow-col gap-8">
+                <div class="row-span-2">
+                    <a-carousel autoplay class="mb-12 w-[500px] ">
+                        <img v-for="(image, index) in product.imageList" :key="index" class=""
+                            :src="getProductsImage(image)" alt="" />
+                    </a-carousel>
+                </div>
+                <div class="row-span-1 col-span-2">
+                    <div class="product-description text-xl text-white">
+                        <p v-for="(content, index) in product.content" :key="index">
+                            {{ content }}</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
+                            NT$
+                        </span>
+                        <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
+                            {{ product.price.toLocaleString() }} {{ product.productUnit ? `/ ${product.productUnit}` : '' }}
+                        </span>
+                    </div>
+                    <template v-if="hasDiscount">
+                        <div class="product-price">
+                            <span class="text-3xl text-orange-600">
+                                NT$
+                            </span>
+                            <span class="text-3xl text-orange-600">
+                                {{ product.discount.toLocaleString() }}
+                                {{ product.productUnit ? `/ ${product.productUnit}`
+                                    : ''
+                                }}
+                            </span>
+                        </div>
+                    </template>
+                </div>
             </div>
-            <div class="product-description">
-                <p>氫氣療法器是一款先進的健康產品，采用最新的氫氣技術，提供強大的抗氧化保護和健康改善功能。它通過產生高純度的氫氣氣體，讓您輕鬆享受氫氣療法的好處。</p>
-                <p>這款氫氣療法器非常容易使用，只需將水注入產品中，按下開關，它就會開始生成純淨的氫氣氣體。您可以通過吸入氫氣氣體，讓身體充滿活力，並改善皮膚狀態。同時，它還具有強大的抗氧化作用，有助於中和自由基，減少細胞損傷，延緩衰老過程。
-                </p>
-                <p>氫氣療法器適用於各種年齡和健康狀況的人群，無需任何化學物質或藥物，是一種自然、安全且有效的健康方式。如果您正在尋找一種提高身體健康的方法，這款氫氣療法器絕對是您的不二之選。</p>
-                <p>讓氫氣療法器成為您健康生活的一部分，體驗來自自然的治癒力量！</p>
+            <div class="flex flew-row justify-center mb-12">
+                <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
             </div>
-            <a class="buy-btn" href="https://example.com/product-page">立即購買</a>
         </div>
     </div>
 </template>
 
 <script setup>
+import { computed, onMounted, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import { articlesTable } from "../Article/index";
+
+import { productList } from '../Products/index'
+import { getProductsImage } from '../../utils/image';
+
+const route = useRoute()
+
+const product = computed(() => productList.find((pdt) => pdt.productId === route.params.id))
+const hasDiscount = computed(() => !!product.value.discount)
+
+const articleId = computed(() => route.params.id);
+const articleTitle = computed(
+    () => articlesTable.find((article) => article.key === articleId.value)?.title
+);
+const articleRef = ref(null);
+const url = computed(() => {
+    if (import.meta.env.DEV) {
+        return `/src/articles/${articleTitle.value?.toString()}.pdf`;
+    } else {
+        return `/holypinecare/articles/${articleTitle.value?.toString()}.pdf`;
+    }
+});
+const current = ref(1);
+const pageCount = ref(0);
+
+let pdfjsLib = window["pdfjs-dist/build/pdf"];
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "//mozilla.github.io/pdf.js/build/pdf.worker.js";
+
+let pdfDoc = null;
+let pageNum = 1;
+let pageRendering = false;
+let pageNumPending = null;
+let scale = 2;
+
+watch(
+    () => {
+        route.params;
+    },
+    () => {
+        getPDFDocument();
+    },
+    { deep: true, immediate: true }
+);
+
+onMounted(() => {
+    // getPDFDocument();
+});
+
+/**
+ * Asynchronously downloads PDF.
+ */
+function getPDFDocument() {
+    pdfjsLib.getDocument(url.value).promise.then(function (pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        pageCount.value = pdfDoc.numPages;
+        // Initial/first page rendering
+        renderPage(pageNum);
+    });
+}
+
+function renderPage(num) {
+    pageRendering = true;
+    // Using promise to fetch the page
+    pdfDoc.getPage(num).then(function (page) {
+        let canvas = articleRef.value;
+        let ctx = canvas.getContext("2d");
+        var viewport = page.getViewport({ scale });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        // canvas.style = { "background-color": rgba(255, 0, 0, 0.5) };
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Render PDF page into canvas context
+        var renderContext = {
+            canvasContext: ctx,
+            viewport: viewport,
+        };
+        var renderTask = page.render(renderContext);
+
+        // Wait for rendering to finish
+        renderTask.promise.then(function () {
+            pageRendering = false;
+            if (pageNumPending !== null) {
+                // New page rendering is pending
+                renderPage(pageNumPending);
+                pageNumPending = null;
+            }
+        });
+    });
+}
+
+/**
+ * If another page rendering in progress, waits until the rendering is
+ * finised. Otherwise, executes rendering immediately.
+ */
+function queueRenderPage(num) {
+    if (pageRendering) {
+        pageNumPending = num;
+    } else {
+        renderPage(num);
+    }
+}
+
+function onChange() {
+    window.scrollTo(0, 0);
+    queueRenderPage(current.value);
+}
 
 </script>
 
@@ -45,7 +176,6 @@ img {
 }
 
 .product-container {
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -72,14 +202,5 @@ img {
 
 .product-description {
     margin-bottom: 20px;
-}
-
-.buy-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #f00;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
 }
 </style>

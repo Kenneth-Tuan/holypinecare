@@ -1,11 +1,9 @@
 <template>
   <div>
-    <a-carousel autoplay class="mb-12">
-      <img class="" src="../../assets/image/banner1.jpg" alt="" />
+    <a-carousel autoplay class="mb-12 w-full ">
       <img class="" src="../../assets/image/banner2.jpg" alt="" />
       <img class="" src="../../assets/image/banner4.jpg" alt="" />
       <img class="" src="../../assets/image/banner5.jpg" alt="" />
-      <img class="" src="../../assets/image/banner6.jpg" alt="" />
     </a-carousel>
   </div>
 
@@ -94,6 +92,39 @@
       </div>
     </div>
   </div>
+
+  <div class="pb-16">
+    <div class="page-title-wrapper">
+      <p class="page-title-content">醫師開講</p>
+      <div class="bg-gray-300 h-[1px] w-3/4"></div>
+    </div>
+    <a-carousel autoplay class="mb-12 mx-auto w-[768px] h-[480px]">
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/vQJf3RE4Ctw" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/bGDQQqqsm4Y" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/dzr8Aru03vE" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/9u68IY3S2cQ" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/mklVynjJWB0" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/N84RzG_dRfc" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </a-carousel>
+  </div>
 </template>
 
 <script setup>
@@ -105,9 +136,10 @@ import { getProductsImage } from '../../utils/image'
 
 <style lang="scss" scoped>
 /* For demo */
+
 .ant-carousel :deep(.slick-slide) {
   text-align: center;
-  height: 300px;
+  height: 480px;
   line-height: 160px;
   background: #364d79;
   overflow: hidden;

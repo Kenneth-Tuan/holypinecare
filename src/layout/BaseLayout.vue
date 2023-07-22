@@ -1,6 +1,16 @@
 <script setup>
+import { onMounted } from 'vue'
+
 import Header from "../components/Header/Index.vue";
 import Footer from "../components/Footer/Index.vue";
+import { authenticate, loadClient } from '../utils/auth'
+
+onMounted(() => {
+  // gapi.load("client:auth2", function () {
+  //   gapi.auth2.init({ client_id: import.meta.env.HOLYPINECARE_CLIENT_ID });
+  // });
+  // authenticate().then(loadClient)
+})
 </script>
 
 <template>
@@ -18,11 +28,9 @@ import Footer from "../components/Footer/Index.vue";
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  background: linear-gradient(
-    60deg,
-    rgba(84, 58, 183, 1) 0%,
-    rgba(0, 172, 193, 1) 100%
-  );
+  background: linear-gradient(60deg,
+      rgba(84, 58, 183, 1) 0%,
+      rgba(0, 172, 193, 1) 100%);
 
   &__main {
     width: 1280px;
