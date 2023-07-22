@@ -1,11 +1,11 @@
 export const articlesTable = [
   {
     key: "7-1",
-    title: "納諾巴伯氫氣機",
+    title: "納諾巴伯吸氫機",
   },
   {
     key: "7-3",
-    title: "納諾巴伯氫水機説明",
+    title: "納諾巴伯氫水機說明",
   },
   {
     key: "6-8",
