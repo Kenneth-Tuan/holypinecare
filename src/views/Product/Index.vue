@@ -5,48 +5,60 @@
                 <p class="page-title-content">{{ product.name }}</p>
                 <div class="bg-gray-300 h-[1px] w-3/4"></div>
             </div>
-            <div class="grid grid-rows-2 grid-flow-col gap-8">
-                <div class="row-span-2">
+            <div class="flex flex-row  justify-between">
+                <div class=" mr-6">
                     <a-carousel autoplay class="mb-12 w-[500px] ">
                         <img v-for="(image, index) in product.imageList" :key="index" class=""
                             :src="getProductsImage(image)" alt="" />
                     </a-carousel>
                 </div>
-                <div class="row-span-1 col-span-2">
-                    <div class="product-description text-xl text-white">
+                <div class="">
+                    <div class=" product-description text-xl text-white">
                         <p v-for="(content, index) in product.content" :key="index">
                             {{ content }}</p>
                     </div>
-                    <div class="product-price">
-                        <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
-                            NT$
-                        </span>
-                        <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
-                            {{ product.price.toLocaleString() }} {{ product.productUnit ? `/ ${product.productUnit}` : '' }}
-                        </span>
-                    </div>
-                    <template v-if="hasDiscount">
-                        <div class="product-price">
-                            <span class="text-3xl text-orange-600">
-                                NT$
-                            </span>
-                            <span class="text-3xl text-orange-600">
-                                {{ product.discount.toLocaleString() }}
-                                {{ product.productUnit ? `/ ${product.productUnit}`
-                                    : ''
-                                }}
-                            </span>
+                    <div class="flex flex-row flex-nowrap items-end">
+                        <div class="text-4xl text-white">
+                            <span>產品價格：</span>
                         </div>
-                    </template>
+                        <div class="flex flex-col">
+
+                            <div class="product-price">
+                                <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
+                                    NT$
+                                </span>
+                                <span class="text-3xl text-white" :class="[{ 'line-through': hasDiscount }]">
+                                    {{ product.price.toLocaleString() }} {{ product.productUnit ? `/ ${product.productUnit}`
+                                        :
+                                        '' }}
+                                </span>
+                            </div>
+                            <template v-if="hasDiscount">
+                                <div class="product-price">
+                                    <span class="text-3xl text-orange-600">
+                                        NT$
+                                    </span>
+                                    <span class="text-3xl text-orange-600">
+                                        {{ product.discount.toLocaleString() }}
+                                        {{ product.productUnit ? `/ ${product.productUnit}`
+                                            : ''
+                                        }}
+                                    </span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="flex flew-row justify-center mb-12">
-                <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
-            </div>
-            <div class="flex flex-row justify-center">
-                <a-pagination v-model:current="current" :total="Number(pageCount)" :pageSize="1" show-less-items
-                    @change="onChange()" />
-            </div>
+            <tempate v-if="articleTitle">
+                <div class="flex flew-row justify-center mb-12">
+                    <canvas ref="articleRef" id="article" class="rounded-lg"></canvas>
+                </div>
+                <div class="flex flex-row justify-center">
+                    <a-pagination v-model:current="current" :total="Number(pageCount)" :pageSize="1" show-less-items
+                        @change="onChange()" />
+                </div>
+            </tempate>
         </div>
     </div>
 </template>
