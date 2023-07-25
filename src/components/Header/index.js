@@ -72,14 +72,14 @@ export const menuList = [
             key: "2-3-4",
             title: "Deuterium-depleted water",
           },
-          {
-            key: "2-3-5",
-            title: "Neuroscience Letters.pdf",
-          },
-          {
-            key: "2-3-6",
-            title: "Revealing water deuterium depleted.pdf",
-          },
+          // {
+          //   key: "2-3-5",
+          //   title: "Neuroscience Letters.pdf",
+          // },
+          // {
+          //   key: "2-3-6",
+          //   title: "Revealing water deuterium depleted.pdf",
+          // },
           {
             key: "2-3-7",
             title:
@@ -89,10 +89,10 @@ export const menuList = [
             key: "2-3-8",
             title: "低氘水可选择性抑制鼻咽癌细胞增殖",
           },
-          {
-            key: "2-3-9",
-            title: "低氘水对皮肤成纤维细胞及黑色素瘤细胞的影响",
-          },
+          // {
+          //   key: "2-3-9",
+          //   title: "低氘水对皮肤成纤维细胞及黑色素瘤细胞的影响",
+          // },
           {
             key: "2-3-10",
             title:
@@ -269,7 +269,7 @@ export const menuList = [
       { key: "5-5", title: "太田成男" },
       { key: "5-8", title: "赤木純兒" },
       { key: "5-1", title: "施文儀" },
-      { key: "5-2", title: "鐘南山" },
+      { key: "5-2", title: "鍾南山" },
       { key: "5-3", title: "徐克成" },
       { key: "5-4", title: "孫學軍" },
       { key: "5-6", title: "張民傑" },

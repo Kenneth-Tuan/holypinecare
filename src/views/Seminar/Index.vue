@@ -19,7 +19,7 @@
     <template v-if="seminarId === '5-2'">
       <div class="flex flex-col gap-y-20">
         <div class="flex flex-col items-center">
-          <span class="seminar-subtitle">V3 l 富氢水 l 中国国宝钟南山院士对富氢水的研究 l 富氢水对人体有效吗？</span>
+          <span class="seminar-subtitle">中国国宝钟南山院士对富氢水的研究</span>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/rXOrxmha0a4" title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -76,7 +76,7 @@
     <template v-if="seminarId === '5-5'">
       <div class="flex flex-col gap-y-20">
         <div class="flex flex-col items-center">
-          <span class="seminar-subtitle">日本專訪《世界氫分子醫學領域第一人》太田成男教授：氫氣的唯一缺點是什麼？</span>
+          <span class="seminar-subtitle">日本專訪《世界氫分子醫學領域第一人》</span>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/7VS5e3uAG-s" title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

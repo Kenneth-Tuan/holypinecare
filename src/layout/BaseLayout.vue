@@ -1,16 +1,8 @@
 <script setup>
-import { onMounted } from 'vue'
-
 import Header from "../components/Header/Index.vue";
 import Footer from "../components/Footer/Index.vue";
-import { authenticate, loadClient } from '../utils/auth'
 
-onMounted(() => {
-  // gapi.load("client:auth2", function () {
-  //   gapi.auth2.init({ client_id: import.meta.env.HOLYPINECARE_CLIENT_ID });
-  // });
-  // authenticate().then(loadClient)
-})
+
 </script>
 
 <template>

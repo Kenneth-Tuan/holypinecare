@@ -108,32 +108,12 @@
       <p class="page-title-content">醫師開講</p>
       <div class="bg-gray-300 h-[1px] w-3/4"></div>
     </div>
-    <a-carousel autoplay class="mb-12 mx-auto w-[768px] h-[480px]">
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/vQJf3RE4Ctw" title="YouTube video player"
+    <div class="flex flex-row justify-center items-center">
+      <iframe width="768" height="480" src="https://www.youtube.com/embed/LKzv6Qy_gxs" title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/bGDQQqqsm4Y" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/dzr8Aru03vE" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/9u68IY3S2cQ" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/mklVynjJWB0" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-      <iframe width="768" height="480" src="https://www.youtube.com/embed/N84RzG_dRfc" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </a-carousel>
+    </div>
   </div>
 </template>
 
