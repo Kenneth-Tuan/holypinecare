@@ -18,6 +18,7 @@ import Footer from "../components/Footer/Index.vue";
 <style lang="scss" scoped>
 .holyPineCare-container {
   width: 100%;
+  min-width: max-content;
   height: 100%;
   min-height: 100vh;
   background: linear-gradient(60deg,

@@ -46,11 +46,11 @@
         <p class="page-title-content">療程過程</p>
         <div class="bg-gray-300 h-[1px] w-3/4"></div>
       </div>
-      <div class="text-left text-white text-2xl px-80 gap-y-4 flex flex-col justify-center items-center">
-        <span>1. 評估和診斷，制定個人化治療計劃</span>
-        <span>2. 進行氫氣療法，吸入氫氣或飲用氫氣水</span>
-        <span>3. 定期追蹤和評估治療效果</span>
-      </div>
+      <ul class="text-center text-white text-2xl px-20 gap-y-4">
+        <li>1. 評估和診斷，制定個人化治療計劃</li>
+        <li>2. 進行氫氣療法，吸入氫氣或飲用氫氣水</li>
+        <li>3. 定期追蹤和評估治療效果</li>
+      </ul>
     </div>
   </section>
 
@@ -59,7 +59,7 @@
       <p class="page-title-content">產品介紹</p>
       <div class="bg-gray-300 h-[1px] w-3/4"></div>
     </div>
-    <div class="w-full flex flex-row justify-between gap-12">
+    <div class="mx-auto flex flex-row gap-6 px-4">
       <div class="main__product-card">
         <div class="main__image-wrapper">
           <img :src="getProductsImage('納諾巴伯3.jpg')" alt="">
@@ -137,7 +137,7 @@ import { getProductsImage } from '../../utils/image'
 
 .main {
   &__product-card {
-    @apply w-1/3 h-[300px] bg-gray-200/25 rounded-lg flex flex-col justify-end overflow-hidden cursor-pointer
+    @apply w-[250px] h-[300px] bg-gray-200/25 rounded-lg flex flex-col justify-end overflow-hidden
   }
 
   &__image-wrapper {

@@ -26,7 +26,9 @@
 
 <script setup>
 import { reactive } from "vue";
-
+import axios from 'axios'
+import mainAPIs from '../../apis/mainAPIs'
+import $ from "jquery";
 
 const layout = {
   labelCol: { span: 6 },
@@ -51,9 +53,38 @@ const formState = reactive({
     introduction: "",
   },
 });
-const onFinish = (values) => {
-  console.log("Success:", values);
+
+const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZwPuGZsOjlgxoMJWtWBWpsShwaMbQsMPlaMiOyInDudGt3Q/formResponse'
+
+const onFinish = async (values) => {
+  $.ajax({
+    url,
+    crossDomain: true,//解決跨網域CORS的問題
+    data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
+      'entry.1991431341': formState.user.name,
+      'entry.299389571': formState.user.email,
+      'entry.731683544': formState.user.introduction
+    },
+    type: "POST", //因為是要進行insert的動作，故事用POST
+    dataType: "JSONP",
+    complete: function () {
+      console.log('success')
+    }
+  });
+  // await mainAPIs.submitForm({
+  //   'entry.1991431341': formState.user.name,
+  //   'entry.299389571': formState.user.email,
+  //   'entry.731683544': formState.user.introduction
+  // },)
 };
+
+
+const instance = axios.create({
+  timeout: 1000,
+  async: true,
+  crossDomain: true,
+});
+
 </script>
 
 <style lang="scss" scoped>
