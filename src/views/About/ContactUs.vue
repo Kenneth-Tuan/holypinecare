@@ -22,13 +22,22 @@
       </a-form-item>
     </a-form>
   </div>
+  <a-modal v-model:visible="open" :footer="null">
+    <a-result status="success" title="發送成功!" sub-title="">
+      <template #extra>
+        <a-button key="buy" @click="onClick()">回首頁</a-button>
+      </template>
+    </a-result>
+  </a-modal>
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import axios from 'axios'
+import { reactive, ref } from "vue";
+import { Modal } from "ant-design-vue";
 import mainAPIs from '../../apis/mainAPIs'
-import $ from "jquery";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
 
 const layout = {
   labelCol: { span: 6 },
@@ -46,6 +55,8 @@ const validateMessages = {
   },
 };
 
+const open = ref(false)
+
 const formState = reactive({
   user: {
     name: "",
@@ -54,36 +65,21 @@ const formState = reactive({
   },
 });
 
-const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZwPuGZsOjlgxoMJWtWBWpsShwaMbQsMPlaMiOyInDudGt3Q/formResponse'
-
 const onFinish = async (values) => {
-  $.ajax({
-    url,
-    crossDomain: true,//解決跨網域CORS的問題
-    data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
-      'entry.1991431341': formState.user.name,
-      'entry.299389571': formState.user.email,
-      'entry.731683544': formState.user.introduction
-    },
-    type: "POST", //因為是要進行insert的動作，故事用POST
-    dataType: "JSONP",
-    complete: function () {
-      console.log('success')
-    }
-  });
-  // await mainAPIs.submitForm({
-  //   'entry.1991431341': formState.user.name,
-  //   'entry.299389571': formState.user.email,
-  //   'entry.731683544': formState.user.introduction
-  // },)
+  mainAPIs.submitForm({
+    'entry.1991431341': formState.user.name,
+    'entry.299389571': formState.user.email,
+    'entry.731683544': formState.user.introduction
+  },)
+  open.value = true
 };
 
+function onClick() {
+  router.push('/main')
+  open.value = false
+}
 
-const instance = axios.create({
-  timeout: 1000,
-  async: true,
-  crossDomain: true,
-});
+
 
 </script>
 
