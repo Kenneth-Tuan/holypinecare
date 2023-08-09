@@ -40,7 +40,7 @@
                                     </span>
                                     <span class="text-3xl text-orange-600">
                                         {{ product.discount.toLocaleString() }}
-                                        {{ product.productUnit ? `/ ${product.productUnit}`
+                                        {{ product.unit ? `/ ${product.unit}`
                                             : ''
                                         }}
                                     </span>
@@ -74,6 +74,7 @@ import { getProductsImage } from '../../utils/image';
 const route = useRoute()
 
 const product = computed(() => productList.find((pdt) => pdt.productId === route.params.id))
+console.log(product.value)
 const hasDiscount = computed(() => !!product.value.discount)
 
 const articleId = computed(() => route.params.id);
