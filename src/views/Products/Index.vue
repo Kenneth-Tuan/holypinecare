@@ -37,8 +37,8 @@ const productList = [
     },
     {
         name: "氫浴機",
-        price: 46000,
-        discount: 38800,
+        price: 62000,
+        discount: 48000,
         productId: "7-2",
         description: '換一種沐浴方式，打造一個"不會生鏽"的身體！',
         bannerImage: "氫浴機3.jpg",

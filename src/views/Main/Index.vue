@@ -105,7 +105,7 @@
 
   <div class="pb-16">
     <div class="page-title-wrapper">
-      <p class="page-title-content">醫師開講</p>
+      <p class="page-title-content">日本太田成男教授唯一推薦氫氣機</p>
       <div class="bg-gray-300 h-[1px] w-3/4"></div>
     </div>
     <div class="flex flex-row justify-center items-center">
